@@ -15,6 +15,22 @@ private class InMemoryTesting_Test {
         Assert.isNotNull(productObject.RecordId);
     }
 
+    @IsTest
+    static void time() {
+        for (Integer i = 0; i < 20; i++) {
+            Contact_t con = new Contact_t();
+            Opportunity_t opp = new Opportunity_t();
+
+            new Account_t()
+                .add(new Contact_t())
+                .add(con)
+                .add(opp
+                    .add(con))
+                .persist();
+        }
+        System.debug('TIME:: ' + Limits.getCpuTime());
+    }
+
     // DO
     @IsTest
     static void doInMemory() {
@@ -27,6 +43,21 @@ private class InMemoryTesting_Test {
         Product productObject = new Product(record);
 
         Assert.isNotNull(productObject.RecordId);
+    }
+
+    @IsTest
+    static void inMemory_time() {
+        for (Integer i = 0; i < 20; i++) {
+            Contact_t con = new Contact_t();
+            Opportunity_t opp = new Opportunity_t();
+
+            new Account_t()
+                .add(new Contact_t())
+                .add(con)
+                .add(opp
+                    .add(con));
+        }
+        System.debug('TIME:: ' + Limits.getCpuTime());
     }
 
     // WHY
