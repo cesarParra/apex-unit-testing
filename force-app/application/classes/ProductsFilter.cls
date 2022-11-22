@@ -1,6 +1,8 @@
 public with sharing class ProductsFilter {
     public Decimal MaxPrice { get; set; }
 
+    private ProductsFilter() { }
+
     public static ProductsFilter newInstance() {
         return new ProductsFilter();
     }

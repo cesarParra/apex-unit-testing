@@ -7,7 +7,7 @@ private class TestArrangement_Test {
     // DON'T
     @IsTest
     static void dont() {
-        Assert.areEqual(0, new OrderItem().getPrice());
+        Assert.areEqual(0, new OrderItem().getTotal());
     }
 
     // DO
@@ -18,7 +18,7 @@ private class TestArrangement_Test {
 
         // Test/Act
         Test.startTest(); // Optional
-        Decimal price = item.getPrice();
+        Decimal price = item.getTotal();
         Test.stopTest(); // Optional
 
         // Assert
@@ -32,7 +32,7 @@ private class TestArrangement_Test {
 
         // WHEN getting its price
         Test.startTest(); // Optional
-        Decimal price = item.getPrice();
+        Decimal price = item.getTotal();
         Test.stopTest(); // Optional
 
         // THEN the price should be 0
@@ -43,5 +43,4 @@ private class TestArrangement_Test {
     // * Separates what is being tested for readability purposes
     // * Helps when deciding where to put Test.startTest/Test.stopTest
     // * Clarifies what is being tested from the setup
-
 }

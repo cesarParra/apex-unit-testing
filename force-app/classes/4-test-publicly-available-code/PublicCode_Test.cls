@@ -20,7 +20,7 @@ private class PublicCode_Test {
     static void orderItemPriceIsZeroWhenMissingEnoughDataToCalculatePrice() {
         OrderItem item = new OrderItem();
 
-        Decimal price = item.getPrice();
+        Decimal price = item.getTotal();
 
         Assert.areEqual(0, price);
     }

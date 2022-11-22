@@ -1,8 +1,8 @@
-public with sharing class OrderItem {
+public with sharing class OrderItem implements IOrderItem{
     public Product Product { get; set; }
     public Integer Quantity { get; set; }
 
-    public Decimal getPrice() {
+    public Decimal getTotal() {
         if (!hasValidProductPriceAndQuantity()) {
             return 0;
         }

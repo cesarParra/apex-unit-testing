@@ -1,6 +1,14 @@
-public with sharing class ProductsRepository {
+public with sharing class ProductsRepository implements IProductsRepository {
+    /**
+     * @description Returns a list of Product based on the received filter.
+     * @param filter Contains the conditions to filter by when retrieving products.
+     * @return List of products
+     * @example
+     * // To get all products you can use the filter of none.
+     * List<Product> all products = new ProductsRepository().getProducts(Filter.none());
+     */
     public List<Product> getProducts(ProductsFilter filter) {
-        String query = 'SELECT Id, Name, Price__c FROM Product__c ' + filter.build();
+        String query = buildQuery(filter);
         List<Product__c> records = Database.query(query);
 
         List<Product> products = new List<Product>();
@@ -11,5 +19,10 @@ public with sharing class ProductsRepository {
             products.add(productObj);
         }
         return products;
+    }
+
+    private String buildQuery(ProductsFilter filter) {
+        String query = 'SELECT Id, Name, Price__c FROM Product__c ' + filter.build();
+        return query;
     }
 }

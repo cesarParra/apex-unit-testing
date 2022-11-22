@@ -1,7 +1,7 @@
 @IsTest
 private class NamingConventions_Test {
     // WHAT
-    // * Name should have 3 parts:
+    // * Test names should have 3 parts:
     //     * Name of the use case
     //     * Scenario/Condition under which the use case is being tested
     //     * Expectation
@@ -29,7 +29,7 @@ private class NamingConventions_Test {
     }
 
     // WHY
-    // * Let you see which cases have been covered, which usually let's you know what might be missing (positive and negative tests)
+    // * Let's you see which cases have been covered, which usually let's you know what might be missing (positive and negative tests)
     //     * e.g. For the tests above we can see that we are missing tests for no max price
     // * Let you know what the test is about without having to read the code
 }

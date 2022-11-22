@@ -5,7 +5,7 @@ private class OneCondition_Test {
     }
 
     // WHAT
-    // * Avoid having multiple test cases in a single unit test
+    // * Avoid having multiple test cases/scenarios in a single unit test
 
     // DON'T
     @IsTest
@@ -47,4 +47,5 @@ private class OneCondition_Test {
     // WHY
     // * If the test fails, it is clear which use case is failing.
     // * Easier to understand which test cases are covered when looking at the whole file
+    // * Tests can serve as examples on how the code is used
 }

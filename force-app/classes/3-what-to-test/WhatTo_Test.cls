@@ -1,7 +1,7 @@
 @IsTest
 private class WhatTo_Test {
     // WHAT
-    // * Test use cases over specific methods
+    // * Test overall use cases over specific methods
 
     // DON'T
     @IsTest

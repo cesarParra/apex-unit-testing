@@ -20,8 +20,8 @@ private class DataBuilder_Test {
         // Clarity behind what is going on
         // No need to query
         Product__c record = (Product__c)new Product_t()
-            .name('Product Name')
-            .price(100)
+            .withName('Product Name')
+            .withPrice(100)
             .persist();
 
         // Rest of the test...

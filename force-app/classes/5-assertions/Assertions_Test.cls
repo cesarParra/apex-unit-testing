@@ -23,6 +23,9 @@ private class Assertions_Test {
         // Best
         Assert.isNull(aValue);
 
+        // Bestest
+        Assert.isNull(aValue, 'Expected a null value but got ' + aValue);
+
         // Other helpers
         // Assert.areNotEqual(null, aValue);
         // Assert.areEqual();

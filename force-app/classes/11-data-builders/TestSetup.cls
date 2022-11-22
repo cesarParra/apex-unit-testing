@@ -2,8 +2,8 @@
 public with sharing class TestSetup {
     public static void setupEnvironment() {
         new Product_t()
-            .name('Product Name')
-            .price(100)
+            .withName('Product Name')
+            .withPrice(100)
             .persist();
     }
 }
