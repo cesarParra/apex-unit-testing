@@ -15,22 +15,6 @@ private class InMemoryTesting_Test {
         Assert.isNotNull(productObject.RecordId);
     }
 
-    @IsTest
-    static void time() {
-        for (Integer i = 0; i < 20; i++) {
-            Contact_t con = new Contact_t();
-            Opportunity_t opp = new Opportunity_t();
-
-            new Account_t()
-                .add(new Contact_t())
-                .add(con)
-                .add(opp
-                    .add(con))
-                .persist();
-        }
-        System.debug('TIME:: ' + Limits.getCpuTime());
-    }
-
     // DO
     @IsTest
     static void doInMemory() {
@@ -43,6 +27,31 @@ private class InMemoryTesting_Test {
         Product productObject = new Product(record);
 
         Assert.isNotNull(productObject.RecordId);
+    }
+
+    // WHY
+    // * Calling the DB is veeeeeery slow. Avoid it whenever possible.
+    // * Once an application gets relatively big, when running unit tests in parallel, Row Lock errors (UNABLE_TO_LOCK_ROW)
+    //   will start happening when there are a lot of tests calling into the DB at the same time.
+    // * If the object has a lot of validations (e.g. required fields, validation rules, triggers) then you might need
+    //   to set a lot of data that you don't need for the test just to make things work
+
+
+    // Time Comparison
+    @IsTest
+    static void withDbCalls_time() {
+        for (Integer i = 0; i < 20; i++) {
+            Contact_t con = new Contact_t();
+            Opportunity_t opp = new Opportunity_t();
+
+            new Account_t()
+                .add(new Contact_t())
+                .add(con)
+                .add(opp
+                    .add(con))
+                .persist();
+        }
+        System.debug('TIME:: ' + Limits.getCpuTime());
     }
 
     @IsTest
@@ -59,13 +68,6 @@ private class InMemoryTesting_Test {
         }
         System.debug('TIME:: ' + Limits.getCpuTime());
     }
-
-    // WHY
-    // * Calling the DB is veeeeeery slow. Avoid it whenever possible.
-    // * Once an application gets relatively big, when running unit tests in parallel, Row Lock errors (UNABLE_TO_LOCK_ROW)
-    //   will start happening when there are a lot of tests calling into the DB at the same time.
-    // * If the object has a lot of validations (e.g. required fields, validation rules, triggers) then you might need
-    //   to set a lot of data that you don't need for the test just to make things work
 
     // EXCEPTION
     // * Integration tests
