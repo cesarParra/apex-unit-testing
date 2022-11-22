@@ -2,11 +2,11 @@ public with sharing class OrderItem implements IOrderItem{
     public Product Product { get; set; }
     public Integer Quantity { get; set; }
 
-    public Decimal getTotal() {
+    public Money getTotal() {
         if (!hasValidProductPriceAndQuantity()) {
-            return 0;
+            return Money.zero();
         }
-        return this.Product.Price * this.Quantity;
+        return Money.of(this.Product.Price.getValue() * this.Quantity);
     }
 
     public void bomb() {

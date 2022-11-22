@@ -14,7 +14,7 @@ public with sharing class ProductsController {
 
         public ProductDto(Product productObject) {
             this.Name = productObject.Name;
-            this.Price = productObject.Price;
+            this.Price = productObject.Price.getValue();
         }
     }
 

@@ -1,14 +1,14 @@
 public with sharing class Order {
     public List<IOrderItem> OrderItems { get; set; }
 
-    public Decimal getTotal() {
+    public Money getTotal() {
         if (this.OrderItems == null) {
-            return 0;
+            return Money.zero();
         }
-        Decimal total = 0;
+        List<Money> monies = new List<Money>();
         for (IOrderItem item : this.OrderItems) {
-            total += item.getTotal();
+            monies.add(item.getTotal());
         }
-        return total;
+        return Money.sum(monies);
     }
 }

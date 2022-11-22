@@ -15,7 +15,7 @@ public with sharing class ProductsRepository implements IProductsRepository {
         for (Product__c record : records) {
             Product productObj = new Product();
             productObj.Name = record.Name;
-            productObj.Price = record.Price__c;
+            productObj.Price = Money.of(record.Price__c);
             products.add(productObj);
         }
         return products;

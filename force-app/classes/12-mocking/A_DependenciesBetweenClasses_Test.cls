@@ -7,10 +7,10 @@ private class A_DependenciesBetweenClasses_Test {
     @IsTest
     static void dont_setupEverythingAboutTheDependentClasS() {
         Product product1 = new Product();
-        product1.Price = 100;
+        product1.Price = Money.of(100);
 
         Product product2 = new Product();
-        product2.Price = 200;
+        product2.Price = Money.of(200);
 
         OrderItem item1 = new OrderItem();
         item1.Quantity = 1;
@@ -23,9 +23,9 @@ private class A_DependenciesBetweenClasses_Test {
         Order testOrder = new Order();
         testOrder.OrderItems = new List<OrderItem> { item1, item2 };
 
-        Decimal total = testOrder.getTotal();
+        Money total = testOrder.getTotal();
 
-        Assert.areEqual(300, total);
+        Assert.areEqual(Money.of(300), total);
     }
 
     // DO
@@ -39,9 +39,9 @@ private class A_DependenciesBetweenClasses_Test {
         Order testOrder = new Order();
         testOrder.OrderItems = new List<IOrderItem> { item1, item2 };
 
-        Decimal total = testOrder.getTotal();
+        Money total = testOrder.getTotal();
 
-        Assert.areEqual(300, total);
+        Assert.areEqual(Money.of(300), total);
     }
 
     private class FakeOrderItem implements IOrderItem {
@@ -52,8 +52,8 @@ private class A_DependenciesBetweenClasses_Test {
             return this;
         }
 
-        public Decimal getTotal() {
-            return total;
+        public Money getTotal() {
+            return Money.of(total);
         }
     }
 }

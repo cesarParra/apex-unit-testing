@@ -1,3 +1,3 @@
 public interface IOrderItem {
-    Decimal getTotal();
+    Money getTotal();
 }

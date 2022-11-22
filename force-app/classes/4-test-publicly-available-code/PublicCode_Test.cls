@@ -20,9 +20,9 @@ private class PublicCode_Test {
     static void orderItemPriceIsZeroWhenMissingEnoughDataToCalculatePrice() {
         OrderItem item = new OrderItem();
 
-        Decimal price = item.getTotal();
+        Money price = item.getTotal();
 
-        Assert.areEqual(0, price);
+        Assert.areEqual(Money.zero(), price);
     }
 
     // WHY
