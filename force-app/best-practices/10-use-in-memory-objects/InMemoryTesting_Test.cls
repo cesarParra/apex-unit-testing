@@ -69,6 +69,21 @@ private class InMemoryTesting_Test {
         System.debug('TIME:: ' + Limits.getCpuTime());
     }
 
+    @IsTest
+    static void sfab() {
+        // Fluent
+        // Supports relationships and formula fields
+        Account accountSobject = (Account)new sfab_FabricatedSObject(Account.class)
+            .set('Name', 'Account Name' )
+            .add('Contacts', new sfab_FabricatedSObject(Contact.class)
+                .set('LastName', 'PersonName' ) )
+            .add('Contacts', new sfab_FabricatedSObject(Contact.class)
+                .set('LastName', 'OtherPersonName'))
+            .toSObject();
+
+        System.debug(accountSobject.Contacts);
+    }
+
     // EXCEPTION
     // * Integration tests
 
